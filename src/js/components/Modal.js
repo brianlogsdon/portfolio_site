@@ -1,16 +1,21 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Context } from "../store/appContext.jsx";
 
 class Modal extends React.Component{
     constructor(){
         super();
         this.state = {
             // Initialize your state
+            
         };
     }
     
     render(){
+        
+        
+        
         return (
             <div className="modal" tabIndex="-1" role="dialog" style={{display: (this.props.show) ? 'inline-block' : 'none'}}>
                 <div className="modal-dialog" role="document">
@@ -25,15 +30,31 @@ class Modal extends React.Component{
                             }
                         </div>
                         <div className="modal-body">
-                            <p>Warning: unknown consequences after this point... Kidding!</p>
+                            <p>Warning: unknown consequences after this point... Kidding! </p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">Oh no!</button>
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Do it!</button>
+                        
+                            <Context.Consumer>{({actions,store }) => {
+                            
+                            let id=this.props.id;
+                            
+                            return (
+                            
+                                <div>
+                                    <button type="button" className="btn btn-primary">Oh no!</button>
+                                    <button onClick={() =>{actions.deleteElement(this.props.id,this.props); this.props.onClose();
+                                                    }} type="button" className="btn btn-secondary" data-dismiss="modal">Do it!</button>
+                                </div>
+                           );}}
+                           
+                            </Context.Consumer> 
+                            
                         </div>
+                       
                     </div>
                 </div>
             </div>
+             
         );
     }
     
@@ -45,7 +66,9 @@ class Modal extends React.Component{
 Modal.propTypes = {
     history: PropTypes.object,
     onClose: PropTypes.func,
-    show: PropTypes.bool
+    show: PropTypes.bool,
+    match: PropTypes.object,
+    id:PropTypes.number
 };
 
 /**
