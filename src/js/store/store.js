@@ -3,76 +3,101 @@ const getState = (scope) => {
         store: {
         //this is where your store data lives
         contacts: [
-				{
-					name: "Jane Summer",
-					email: "Summer@jane.com",
-					phone: "123-456-7890",
-					address:"ABC Drive",
-					image:"http://demos.themes.guide/bodeo/assets/images/users/w100.jpg"
-				},
-				{
-					name: "Jimmy Jones",
-					email: "Jones@jimmy.com",
-					phone: "123-456-7272",
-					address:"xyz Drive",
-					image:"http://demos.themes.guide/bodeo/assets/images/users/m100.jpg"
-				},
-				{
-					name: "Marc Andrew",
-					email: "Andrew@marc.com",
-					phone: "234-534-5343",
-					address:"123 Street",
-					image:"http://demos.themes.guide/bodeo/assets/images/users/m105.jpg"
-					
-				}
+				
 			],
 			images:
-			["http://demos.themes.guide/bodeo/assets/images/users/m100.jpg", 
-			"http://demos.themes.guide/bodeo/assets/images/users/w100.jpg"]
+			["https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"
+			]
         },
         actions: {
             //(Arrow) Functions that update the Store
             // Remember to use the scope: scope.state.store & scope.setState()
+            
+            
             addContact: (name,email,phone,address,props) => {
-				let store = scope.state.store;
-				let newContact={name:name,email:email,phone:phone,address:address,image:"http://demos.themes.guide/bodeo/assets/images/users/w100.jpg"};
-				props.history.push("/");
-				store.contacts.push(newContact);
-				scope.setState({ store });
+				//new contact info from add contact form
+				let newContact={full_name:name,email:email,agenda_slug:"downtown_vi",address:address,phone:phone};
+				
+				//function to update the store after new contact is added to database
+				function update() {
+					fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/')
+					.then(response=>(response.json()))
+					.then(data => {
+						window.console.log(data);
+						let store = scope.state.store;
+						store.contacts=data;
+						props.history.push("/");
+						scope.setState({store});
+							
+					})
+					.catch(error=> window.console.log('error'));
+					}
+				//put new contact into the database and then call update function
+				fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/', {
+				method: "post",
+				headers: {"Content-type": 'application/json'},
+				body: JSON.stringify(newContact)
+				})
+				.then(update);
+				
+           
 			},
+			
+			
 			deleteElement:(index,props)=>{
+				//function to update the store after new contact is added to database
+				function update() {
+					fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/')
+					.then(response=>(response.json()))
+					.then(data => {
+						window.console.log(data);
+						let store = scope.state.store;
+						store.contacts=data;
+						props.history.push("/");
+						scope.setState({store});
+							
+					})
+					.catch(error=> window.console.log('error'));
+					}
+					
+				fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/'+index, {method:'DELETE'})
+				.then(update);
 				
-				let store = scope.state.store;
-				
-				store.contacts.splice(index, 1);
-				
-				props.history.push("/");
-				
-				scope.setState({ store });
 				
 			},
 			updateElement:(index,name,email,phone,address,props)=>{
 				
-				let store = scope.state.store;
-				let updatedContact={name:name,email:email,phone:phone,address:address,image:"http://demos.themes.guide/bodeo/assets/images/users/w100.jpg"};
-				store.contacts.splice(index, 1,updatedContact);
 				
-				props.history.push("/");
+				let updatedContact={full_name:name,email:email,agenda_slug:"downtown_vi",address:address,phone:phone};
 				
-				scope.setState({ store });
 				
-			},
-			getPicture: (status)=>{
+				//function to update the store after new contact is added to database
+				function update() {
+					fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/')
+					.then(response=>(response.json()))
+					.then(data => {
+						window.console.log(updatedContact);
+						let store = scope.state.store;
+						store.contacts=data;
+						props.history.push("/");
+						scope.setState({store});
+							
+					})
+					.catch(error=> window.console.log('error'));
+					}
+					
+				//update contact in the database and then call update function
+				fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/'+index, {
+				method: 'post',
+				headers: {"Content-type": 'application/json'},
+				body: JSON.stringify(updatedContact)
+				})
+				.then(update);
 				
-				switch (status) {
-					case 'woman':
-					return "http://demos.themes.guide/bodeo/assets/images/users/m100.jpg";
-					case 'man':
-					return 'http://demos.themes.guide/bodeo/assets/images/users/w100.jpg';
-					default:
-					return 'http://demos.themes.guide/bodeo/assets/images/users/w100.jpg';
-				}
-  }
+				
+				
+			}
+			
         }
     };
 };

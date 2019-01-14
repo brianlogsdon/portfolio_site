@@ -23,31 +23,31 @@ export default class Contacts extends React.Component {
                             <form>
                                 <div className="form-group">
                                     <label>Full Name</label>
-                                    <input id="name" type="text" className="form-control" placeholder={store.contacts[
+                                    <input id="name" type="text" className="form-control" defaultValue={store.contacts[
 												this.props.match.params.id
-											].name}  />
+											].full_name}  />
                                 </div>
                                 <div className="form-group">
                                     <label>Email</label>
-                                    <input id="email" type="email" className="form-control" placeholder={store.contacts[
+                                    <input id="email" type="email" className="form-control" defaultValue={store.contacts[
 												this.props.match.params.id
 											].email} />
                                 </div>
                                 <div className="form-group">
                                     <label>Phone</label>
-                                    <input id="phone" type="phone" className="form-control" placeholder={store.contacts[
+                                    <input id="phone" type="phone" className="form-control" defaultValue={store.contacts[
 												this.props.match.params.id
 											].phone} />
                                 </div>
                                 <div className="form-group">
                                     <label>Address</label>
-                                    <input id="address" type="text" className="form-control" placeholder={store.contacts[
+                                    <input id="address" type="text" className="form-control" defaultValue={store.contacts[
 												this.props.match.params.id
 											].address} />
                                 </div>
                                 
                                 <button type="button"onClick={() =>{actions.updateElement(
-												this.props.match.params.id
+												store.contacts[this.props.match.params.id].id
 											,document.querySelector("#name").value,
 													document.querySelector("#email").value,document.querySelector("#phone").value,
 													document.querySelector("#address").value,this.props);

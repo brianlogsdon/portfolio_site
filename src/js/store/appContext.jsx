@@ -11,8 +11,23 @@ const Store = (PassedComponent) =>{
         }
         
         componentDidMount() {
+            //fetch contacts from api
             
-            // The place to fetch.
+            
+            fetch('https://ancient-reaches-29695.herokuapp.com/api/contacts/')
+            
+            .then(response=>(response.json()))
+            
+           
+            .then(data => {
+                 let {store} = this.state;
+                 store.contacts = data;
+                 this.setState({store});
+                 
+               })
+        
+            .catch(error=> window.console.log('error'));
+            
         }
         
         render(){

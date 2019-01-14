@@ -19,14 +19,14 @@ class ContactCard extends React.Component{
         <div className="row w-100">
             <div className="col-12 col-sm-6 col-md-3 px-0">
                 <img  alt="Mike Anamendolla" className="rounded-circle mx-auto d-block img-fluid"
-                src={store.contacts[id].image} />
+                src={store.images[0]} />
             </div>
             <div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
                 <div className=" float-right">
                     <button className="btn" onClick={() => this.props.history.push("/edit/"+ id)}><i className="fas fa-pencil-alt mr-3"></i></button>
                     <button className="btn" onClick={() => this.props.onDelete()}><i className="fas fa-trash-alt"></i></button>
                 </div>
-                <label className="name lead">{store.contacts[id].name}</label>
+                <label className="name lead">{store.contacts[id].full_name}</label>
                 <br /> 
                 <i className="fas fa-map-marker-alt text-muted mr-3"></i>
                 <span className="text-muted">{store.contacts[id].address}</span>
@@ -57,7 +57,8 @@ class ContactCard extends React.Component{
 ContactCard.propTypes = {
     history: PropTypes.object,
     onDelete: PropTypes.func,
-    id: PropTypes.number
+    id: PropTypes.number,
+    key:PropTypes.number
 };
 
 /**

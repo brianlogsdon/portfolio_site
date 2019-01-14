@@ -36,7 +36,7 @@ class Modal extends React.Component{
                         
                             <Context.Consumer>{({actions,store }) => {
                             
-                            let id=this.props.id;
+                            
                             
                             return (
                             
@@ -68,7 +68,8 @@ Modal.propTypes = {
     onClose: PropTypes.func,
     show: PropTypes.bool,
     match: PropTypes.object,
-    id:PropTypes.number
+    id:PropTypes.number,
+    key:PropTypes.number
 };
 
 /**

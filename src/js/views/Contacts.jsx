@@ -9,7 +9,7 @@ export default class Contacts extends React.Component {
         super();
         this.state = {
             showModal: false,
-            modalId:0
+            modalId:''
         };
     }
     render() {
@@ -26,7 +26,7 @@ export default class Contacts extends React.Component {
                                 
                                 {({ store }) => {
 							return( store.contacts.map((item, index)=> 
-    <ContactCard onDelete={() => this.setState({  showModal: true, modalId:index})} id={index} item={item} key={index}/>
+    <ContactCard onDelete={() => this.setState({  showModal: true, modalId:item.id})} id={index} item={item} key={index}/>
 							));
                                 }}
 						
