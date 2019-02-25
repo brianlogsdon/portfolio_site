@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Contacts from "./views/Contacts.jsx";
+import Home from "./views/Home.jsx";
 import AddContact from "./views/AddContact.jsx";
 import Store from "./store/appContext.jsx";
 import EditContact from "./views/editContact.jsx";
@@ -11,9 +11,9 @@ export class Layout extends React.Component {
                 <BrowserRouter>
                     <div>
                         <Switch>
-                            <Route exact path="/index.html" component={Contacts} />
-                            <Route exact path="/" component={Contacts} />
-                            <Route exact path="/contacts" component={Contacts} />
+                            <Route exact path="/index.html" component={Home} />
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/contacts" component={Home} />
                             <Route exact path="/add" component={AddContact} />
                             <Route exact path="/edit/:id" component={EditContact} />
                             <Route render={() => <h1 className="notfound">Not found!</h1>} />
