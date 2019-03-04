@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Card = props => {
 	return (
-    <div className="col-lg-3 col-md-4 col-sm-6 mb-2 mx-auto">
+    <div className="col-5 mb-4 mx-auto ">
         <div className="card cardStyle">
             <img
 					className="card-img-top"

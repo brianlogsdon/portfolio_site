@@ -7,13 +7,15 @@ import Card from "../components/card.jsx";
 import Navbar from "../components/navbar.jsx";
 import brianlogsdon from "../../img/brian_logsdon_tech.png";
 import selfie from "../../img/selfie.jpg";
-import broward from "../../img/broward_access.png";
-import todo from "../../img/todo.png";
-import ecom from "../../img/ecom.png";
-import cardpic from "../../img/card6.png";
-import instagram from "../../img/instagram.png";
-import traffic from "../../img/traffic.png";
-
+import broward from "../../img/browardHD2.gif";
+import todo from "../../img/todo.gif";
+import ecom from "../../img/ecom-gif.gif";
+import cardpic from "../../img/cards.gif";
+import instagram from "../../img/bootinsta.gif";
+import traffic from "../../img/traffic.gif";
+import timer from "../../img/timer2.gif";
+import stocks from "../../img/stocks.gif";
+import contacts from "../../img/contact.gif";
 
 
 export default class Contacts extends React.Component {
@@ -31,8 +33,8 @@ export default class Contacts extends React.Component {
                     <Navbar />
                 </div>
 
-                <div className="jumbotron jumbotron-fluid my-1 vh-50">
-                    <div className="container-fluid">
+                <div className="jumbotron jumbotron-fluid  mt-5 vh-50">
+                    <div >
                         <div className="row">
                             <div className ="col-6 name-box text-center ">
                                 
@@ -74,6 +76,22 @@ export default class Contacts extends React.Component {
 		/>
                         <Card
 			
+			title={"Stock Trading "}
+			text={"Mock stock trading website. Built with Flask"}
+			button={"View on Github"}
+			image={stocks}
+			link={"https://github.com/brianlogsdon/CS50-FInance"}
+		/>
+                        <Card
+			
+			title={"Contact Management App "}
+			text={"Application to see, add, edit, and delete contacts. "}
+			button={"View on Github"}
+			image={contacts}
+			link={"https://github.com/brianlogsdon/contact-management"}
+		/>
+                        <Card
+			
 			title={"Todo List"}
 			text={"A todo list application built with React.js"}
 			button={"View on Github"}
@@ -105,6 +123,15 @@ export default class Contacts extends React.Component {
 			image={traffic}
 			link={"https://github.com/brianlogsdon/traffic-light"}
 		/>
+                        <Card
+			
+			title={"React Timer"}
+			text={"Timer starting from last refresh. Made with React.js"}
+			button={"View on Github"}
+			image={timer}
+			link={"https://github.com/brianlogsdon/traffic-light"}
+		/>
+                       
                     </div>     
                 </div>
                 
