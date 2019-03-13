@@ -36,9 +36,9 @@ export default class Contacts extends React.Component {
                 <div className="jumbotron jumbotron-fluid  mt-5 vh-50">
                     <div >
                         <div className="row">
-                            <div className ="col-6 name-box text-center ">
+                            <div className ="col-6 name-box text-center tracking-in-expand ">
                                 
-                                <h1 className="permmarker">&lt;BrianLogsdon.tech /&gt;</h1>
+                                <h1 className="permmarker ">&lt;BrianLogsdon.tech /&gt;</h1>
                                 <br />
                                 <p className="lead permmarker"> Hello! My name is Brian Logsdon </p>
                                 <p className="lead permmarker"> I am a Web Developer based in Fort Lauderdale, Florida </p>
@@ -47,7 +47,7 @@ export default class Contacts extends React.Component {
                                 <SocialIcon className="mx-1 " url="https://www.linkedin.com/in/brian-logsdon-366131101/" />
                                 <SocialIcon className="mx-1" url="https://twitter.com/BrianLogsdon9" />
                             </div>
-                            <div className ="col-6">
+                            <div className ="col-6 bounce-in-top">
                                 <img className="img-fluid selfie center-block" src={selfie} alt="First slide"></img>
                             </div>
                             
@@ -57,7 +57,7 @@ export default class Contacts extends React.Component {
                 <div className="container-fluid mx-auto my-2">
                     
                     <h1 className="permmarker text-center">Portfolio</h1>
-                    <div className="row">
+                    <div className="row ">
                         <Card
 			
 			title={"Broward Access"}

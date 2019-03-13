@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Context } from "../store/appContext.jsx";
-
+import logo from '../../img/brand.png';
 
 //create your first component
 const Navbar = () => {
@@ -18,7 +18,14 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                        <Link className="nav-link" to="/">
+								Home
+                        </Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link className="nav-link" to="/resume">
+								Resume
+                        </Link>
                     </li>
                     
                     
